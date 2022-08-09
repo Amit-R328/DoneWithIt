@@ -8,6 +8,7 @@ function FormImagePicker({ name }) {
     const { errors, setFieldValue, touched, values } = useFormikContext();
     const imageUris = values[name]
     const handleAdd = (uri) => {
+        console.log('uri', uri)
         setFieldValue(name, [...imageUris, uri])
     }
 

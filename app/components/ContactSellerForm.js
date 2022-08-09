@@ -3,7 +3,7 @@ import { Alert, Keyboard } from "react-native";
 // import * as Notifications from 'expo-notifications';
 import * as Yup from "yup";
 
-import { Form, FormField, SubmitButton } from "./forms";
+import { AppForm, AppFormField, SubmitButton } from "./forms";
 import messagesApi from "../api/messages";
 
 function ContactSellerForm({ listing }) {
@@ -30,12 +30,12 @@ function ContactSellerForm({ listing }) {
 
     return (
 
-        <Form
+        <AppForm
             initialValues={{ message: "" }}
             onSubmit={handleSubmit}
             validationSchema={validationSchema}
         >
-            <FormField
+            <AppFormField
                 maxLength={255}
                 multiline
                 name="message"
@@ -43,7 +43,7 @@ function ContactSellerForm({ listing }) {
                 placeholder="Message..."
             />
             <SubmitButton title="Contact Seller" />
-        </Form>
+        </AppForm>
 
     )
 }

@@ -22,6 +22,8 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.amit.donewithit",
+      "versionCode": 1,
       "useNextNotificationsApi": true,
       "adaptiveIcon": {
         "foregroundImage": "./app/assets/adaptive-icon.png",
