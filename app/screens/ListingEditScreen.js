@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { StyleSheet } from "react-native";
 import * as Yup from "yup";
-import S3 from 'react-aws-s3'
 import { RNS3 } from 'react-native-aws3'
 import listingsApi from '../api/listings'
 import CategoryPickerItem from "../components/CategoryPickerItem";
@@ -15,6 +14,7 @@ import FormImagePicker from "../components/forms/FormImagePicker";
 import Screen from "../components/Screen";
 import useLocation from "../hooks/useLocation";
 import UploadScreen from "./UploadScreen";
+import secret from '../../.secret'
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(1).label("Title"),
@@ -103,22 +103,6 @@ function ListingEditScreen() {
     resetForm()
   }
 
-  // const config = {
-  //   bucketName: 'amitr2022',
-  //   dirName: 'assets/', /* optional */
-  //   region: 'us-east-2',
-  //   accessKeyId: 'AKIA5GRBFUU3KAK3VHFE',
-  //   secretAccessKey: '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',
-  // }
-  // const uploadImage = (listing) => {
-  //   const ReactS3Client = new S3(config)
-  //   const file = listing.images[0]
-  //   ReactS3Client
-  //     .uploadFile(file)
-  //     .then(data => console.log(data))
-  //     .catch(err => console.error(err))
-  // }
-
   const uploadImage = (listing) => {
     const file = {
       // `uri` can also be a file system path (i.e. file://)
@@ -133,10 +117,10 @@ function ListingEditScreen() {
     }
     const options = {
       keyPrefix: "assets/",
-      bucket: "amitr2022",
+      bucket: secret.bucketName,
       region: "us-east-2",
-      accessKey: "AKIA5GRBFUU3KAK3VHFE",
-      secretKey: "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",
+      accessKey: secret.accessKey,
+      secretKey: secret.secretKey,
       successActionStatus: 201
     }
     console.log('uri::::::::', file.uri)
