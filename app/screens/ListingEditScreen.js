@@ -117,10 +117,10 @@ function ListingEditScreen() {
     }
     const options = {
       keyPrefix: "assets/",
-      bucket: secret.bucketName,
+      bucket: bucketName,
       region: "us-east-2",
-      accessKey: secret.accessKey,
-      secretKey: secret.secretKey,
+      accessKey: accessKey,
+      secretKey: secretKey,
       successActionStatus: 201
     }
     console.log('uri::::::::', file.uri)
